@@ -1,0 +1,25 @@
+MSH|^~\&|HORIZON|NMS|CLOVERLEAF|88888^88888ET|20181101141004||ORU^R01|9453|T|2.3
+PID|1|CDCTEST|18001818|18001818|TEST
+OBR|1|CDCTEST|18001818|0088U^Acetonitrile Exposure Profile, Urine||||||||||20181101000000|U^Urine^Not Given||||||||||F
+OBX|1|ST|FORMICACID^Formic Acid||None Detected|mcg/mL|5.0||||F|||20181101140830
+NTE|1|SYNON|Synonym(s): Formate
+NTE|2|REFRNG|Normal 95% population range: 5 - 36 mcg/mL urine.
+NTE|3|METHOD|Analysis by Gas Chromatography (GC)
+OBX|2|ST|FORMICACCR^Formic Acid (Creatinine corrected)||None Detected|mg/g Creat|5.0||||F|||20181101140830
+NTE|1|SYNON|Synonym(s): Formate
+NTE|2|METHOD|Analysis by Gas Chromatography (GC)
+OBX|3|ST|THIOCYANAT^Thiocyanate||Not Reported|mcg/mL|1.0||||F|||20181101140919
+NTE|1|NOTE|Comment: 
+NTE|2|NOTE|Canceled due to an interfering substance.
+NTE|3|METHOD|Analysis by Ion Chromatography (IC)
+OBX|4|ST|THIOCYACR^Thiocyanate (Creatinine corrected)||Not Reported|mg/g Creat|1.0||||F|||20181101140919
+NTE|1|NOTE|Comment: 
+NTE|2|NOTE|Canceled due to an interfering substance.
+NTE|3|METHOD|Analysis by Ion Chromatography (IC)
+OBX|5|NM|CREAT^Creatinine||1000|mg/L|100||||F|||20181101140659
+NTE|1|REFRNG|U.S. Population (10th - 90th percentiles, median)
+NTE|2|REFRNG|All participants:
+NTE|3|REFRNG|335 - 2370 mg/L, median 1180 (n=22,245)
+NTE|4|REFRNG|Males: 495 - 2540 mg/L, median 1370 (n=10,610)
+NTE|5|REFRNG|Females: 273 - 2170 mg/L, median 994 (n=11,635)
+NTE|6|METHOD|Analysis by Colorimetry (C)
