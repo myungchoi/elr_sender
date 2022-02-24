@@ -28,13 +28,17 @@ public class ELRSender
 		HapiContext context = new DefaultHapiContext();
     	boolean useTls = false;
 
-//    	int port = 8888;
-//		Connection connection = context.newClient("localhost", port, useTls);
+   		int port = 8087;
+		Connection connection = context.newClient("localhost", port, useTls);
 		File file = new File("hl7v2msg_fhirpatient.txt");
+//		File file = new File("hl7v2msg23.txt");
 
-		int port = 12070;
-		Connection connection = context.newClient("kube1.hdap.gatech.edu", port, useTls);
+		// int port = 8087;
+//		int port = 8888;
+//		Connection connection = context.newClient("apps.hdap.gatech.edu/elrreceiver", port, useTls);
+		// Connection connection = context.newClient("musctest.hdap.gatech.edu", port, useTls);
 //		File file = new File("hl7v2msg_fhirmusc.txt");
+		// File file = new File("hl7v2msg251.txt");
     	
 //		Connection connection = context.newClient("ec2-54-91-0-90.compute-1.amazonaws.com", port, useTls);
 //		Connection connection = context.newClient("cdcsti.hdap.gatech.edu", port, useTls);
