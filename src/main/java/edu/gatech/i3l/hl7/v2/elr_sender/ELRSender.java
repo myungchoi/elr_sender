@@ -29,10 +29,28 @@ public class ELRSender
     	boolean useTls = false;
 
    		int port = 8087;
-		Connection connection = context.newClient("localhost", port, useTls);
-		File file = new File("hl7v2msg_fhirpatient.txt");
-//		File file = new File("hl7v2msg23.txt");
+		String envPort = System.getenv("PORT");
+		if (envPort != null && !envPort.isEmpty()) {
+			port = Integer.valueOf(envPort);
+		}
 
+		String envHost = System.getenv("ELR_RECEIVER_HOST");
+
+		String host = "localhost";
+		if (envHost != null && !envHost.isEmpty()) {
+			host = envHost;
+		}
+
+		String filename = "hl7v2msg_fhirpatient.txt";
+		String envFilename = System.getenv("V2_FILE_TO_SEND");
+		if (envFilename != null && !envFilename.isEmpty()) {
+			filename = envFilename;
+		}
+
+		Connection connection = context.newClient(host, port, useTls);
+		File file = new File(filename);
+
+//		File file = new File("hl7v2msg23.txt");
 		// int port = 8087;
 //		int port = 8888;
 //		Connection connection = context.newClient("apps.hdap.gatech.edu/elrreceiver", port, useTls);
