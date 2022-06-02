@@ -16,6 +16,7 @@ import ca.uhn.hl7v2.model.v251.message.ORU_R01;
 import ca.uhn.hl7v2.model.v251.segment.MSH;
 import ca.uhn.hl7v2.parser.Parser;
 import ca.uhn.hl7v2.util.Hl7InputStreamMessageIterator;
+import ca.uhn.hl7v2.validation.builder.support.NoValidationBuilder;
 
 /**
  * Hello world!
@@ -26,32 +27,41 @@ public class ELRSender
     public static void main( String[] args ) throws Exception
     {
 		HapiContext context = new DefaultHapiContext();
+		context.getParserConfiguration().setValidating(false);
+		context.setValidationRuleBuilder(new NoValidationBuilder());
+
     	boolean useTls = false;
 
-//    	int port = 8888;
-//		Connection connection = context.newClient("localhost", port, useTls);
+   		int port = 8888;
+//   		int port = 8087;
+		Connection connection = context.newClient("localhost", port, useTls);
 		File file = new File("hl7v2msg_fhirpatient.txt");
+//		File file = new File("hl7v2msg23.txt");
 
-		int port = 12070;
-		Connection connection = context.newClient("kube1.hdap.gatech.edu", port, useTls);
+		// int port = 8087;
+//		int port = 8888;
+//		Connection connection = context.newClient("apps.hdap.gatech.edu/elrreceiver", port, useTls);
+		// Connection connection = context.newClient("musctest.hdap.gatech.edu", port, useTls);
 //		File file = new File("hl7v2msg_fhirmusc.txt");
+		// File file = new File("hl7v2msg251.txt");
     	
 //		Connection connection = context.newClient("ec2-54-91-0-90.compute-1.amazonaws.com", port, useTls);
 //		Connection connection = context.newClient("cdcsti.hdap.gatech.edu", port, useTls);
 		Initiator initiator = connection.getInitiator();
-		Parser p = context.getPipeParser();
-    	
+		Parser p = context.getGenericParser();
+    	p.getParserConfiguration().setValidating(false);
+
 //		File file = new File("hl7v2msg.txt");
 		InputStream is = new FileInputStream(file);
 		is = new BufferedInputStream(is);
-		Hl7InputStreamMessageIterator iter = new Hl7InputStreamMessageIterator(is);
+		Hl7InputStreamMessageIterator iter = new Hl7InputStreamMessageIterator(is, context);
 		
 		while (iter.hasNext()) {
 			Message msg = iter.next();
 			Message response = initiator.sendAndReceive(msg);
 			
 			String responseString = p.encode(response);
-			System.out.println("Received response:\n" + responseString);
+			System.out.println("Received response:\n" + responseString.replace("\r", "\n"));
 			System.out.println("End of response message");
 //				ORU_R01 oruMsg = (ORU_R01) next;
 //				MSH msh = oruMsg.getMSH();
@@ -72,5 +82,7 @@ public class ELRSender
 //				
 //				System.out.println(familyName);
 		}
+
+		context.close();
 	}
 }

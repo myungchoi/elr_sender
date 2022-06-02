@@ -4,7 +4,7 @@
 
   <groupId>edu.gatech.edu.i3l.hl7.v2</groupId>
   <artifactId>elr_sender</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2</version>
   <packaging>jar</packaging>
 
   <name>elr_sender</name>
@@ -12,6 +12,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
